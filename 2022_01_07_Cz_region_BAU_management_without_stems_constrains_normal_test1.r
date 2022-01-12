@@ -98,14 +98,22 @@ legend("top", c("finalcut", "thinning/regcut","salvaged"), cex=1, bty="n", fill=
 
 
 #---------------- THE STAND 29313 IS A BIG STAND, AND THE RU 12360 IS ONE 100X100M PIXEL INSIDE THIS STAND. STP5 
-# IN SEQUENCE UFE STP5, PRIV STP7, STATE FOREST STP1, UFE STP3
+
+# IN SEQUENCE:
+# UFE                id 29313 index 12360 STP5
+# PRIV               id 24458 index 16756 STP7
+# STATE FOREST (SF)  id 20479 index 1491 STP7
+# SF                 id 20449 index 1580 STP5
+# SF                 id 20091 index 2143 STP1
+# Priv.              id 37361 index 6753 STP1, 
+# UFE                id 5379 index 9260 STP3
+
 # SET HERE HOW MANY STAND YOU WANT TO PLOT , PDF WILL BE CREATED FOR EACH STAND SEPARATELY.
 # NOTE THAT MYRUS- HAVE TO HAVE THE SAME AMOUNT OF ELEMENTS, AND HAVE TO BE INSIDE THE STAND.
 # CAN CHECK ON THE MAP OF ILAND, IT IS THE INDEX NUMBER OF THE RESOURCE UNITS.
 
 mystands<-c(29313,24458,20091,5379)
 myrus<-c(12360,16756,2143,9260)
-
 
 
 for (cases in 1:length(mystands)) {
@@ -206,7 +214,6 @@ for (cases in 1:length(mystands)) {
   print(g.age)
   print(g.dbh)
   print(g.height)
-  
   
   
   
