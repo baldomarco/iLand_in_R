@@ -40,7 +40,7 @@ library(cowplot)
 
 # set the dataroot to the output folder:
 
-dataroot<-"C:/iland_data_test/"
+dataroot<-"C:/iland_data_test/2020_01_12_test/"
 
 file1<-paste0(dataroot,"Cz_region_BAU_management_without_stems_constrains_normal_test1.sqlite")            # with planting activity and useSustainableHarvest 0.2
 
