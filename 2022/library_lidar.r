@@ -1,0 +1,7 @@
+install.packages("lidR")
+install.packages("sf")
+install.packages("sp")
+install.packages("ggplot2")
+install.packages("RStoolbox")
+install.packages("rgdal")
+install.packages("raster")
