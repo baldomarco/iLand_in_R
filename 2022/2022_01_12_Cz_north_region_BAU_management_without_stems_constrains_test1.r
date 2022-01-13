@@ -105,12 +105,21 @@ legend("top", c("finalcut", "thinning/regcut","salvaged"), cex=1, bty="n", fill=
 # STATE FOREST (SF)  id 11413 index 5144 STP7 picea
 # SF                 id 11301 index 6316 STP5 picea 
 
+
+# 2nd Test with "quro" and "fasy" dominant
+
+# UFE    ID 3190 INDEX 2695 STP5 QURO
+# UFE    ID 2155 INDEX 4154 STP5 FASY
+# STATE FOREST (SF)  id 11413 index 5144 STP7 picea
+# SF                 id 11301 index 6316 STP5 picea 
+
+
 # SET HERE HOW MANY STAND YOU WANT TO PLOT , PDF WILL BE CREATED FOR EACH STAND SEPARATELY.
 # NOTE THAT MYRUS- HAVE TO HAVE THE SAME AMOUNT OF ELEMENTS, AND HAVE TO BE INSIDE THE STAND.
 # CAN CHECK ON THE MAP OF ILAND, IT IS THE INDEX NUMBER OF THE RESOURCE UNITS.
 
-mystands<-c(3343,25248,11413,11301)
-myrus<-c(2775,6210,5144,6316)
+mystands<-c(3190,2155,11413,11301)
+myrus<-c(2695,4154,5144,6316)
 
 
 for (cases in 1:length(mystands)) {
