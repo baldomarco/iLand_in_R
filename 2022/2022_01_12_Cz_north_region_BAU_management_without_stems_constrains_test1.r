@@ -100,7 +100,7 @@ legend("top", c("finalcut", "thinning/regcut","salvaged"), cex=1, bty="n", fill=
 #---------------- THE STAND 3284 IS A STAND, AND THE RU 12360 IS ONE 100X100M PIXEL INSIDE THIS STAND. STP5 
 
 # IN SEQUENCE:
-# UFE                id 3284  index 2094 STP3 piab
+# UFE                id 3343  index 2775 STP5 piab
 # PRIV               id 25248 index 6210 STP3 piab
 # STATE FOREST (SF)  id 11413 index 5144 STP7 picea
 # SF                 id 11301 index 6316 STP5 picea 
