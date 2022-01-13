@@ -109,8 +109,8 @@ legend("top", c("finalcut", "thinning/regcut","salvaged"), cex=1, bty="n", fill=
 # NOTE THAT MYRUS- HAVE TO HAVE THE SAME AMOUNT OF ELEMENTS, AND HAVE TO BE INSIDE THE STAND.
 # CAN CHECK ON THE MAP OF ILAND, IT IS THE INDEX NUMBER OF THE RESOURCE UNITS.
 
-mystands<-c(3284,25248,11413,11301)
-myrus<-c(2094,6210,5144,6316)
+mystands<-c(3343,25248,11413,11301)
+myrus<-c(2775,6210,5144,6316)
 
 
 for (cases in 1:length(mystands)) {
