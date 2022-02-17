@@ -1,6 +1,6 @@
 #################################################################    Kostelec Czech Silviculture Management     ###########################################################################
 ##########################################################                      Clear cut                          ########################################################################
-
+#
 
 #This management script is doing businness-as-usual activities on the full landscape of our study area in the Kostelec for iLand model.
 #MARCO BALDO
