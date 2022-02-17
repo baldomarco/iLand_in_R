@@ -5,19 +5,17 @@
 #This management script is doing businness-as-usual activities on the full landscape of our study area in the Kostelec for iLand model.
 #MARCO BALDO
 #2022/01/27
-#We have one agent and one unit. 1 and 5 stps
+#We have one agent and one unit. 1 and 5 stps all for the clearcut  only
 #This selection was done in preprocess (inside R environment).
 #Activities that this script is doing:
 #  Planting
 #Thinning x9 x5 stand treatment programs
 #clearcut 
-#Only volume constrains no stems
+#volume and stems constrains
 #
 
 #######    R analysis on the iLand landscape model dataset "subregion_medium_likas"   #####################
-#          tatra_lukas.js;  SK_NORMAL_MEDIUM_T3,  Lukas Bilek silviculture management of CZ case study, but using the landscape model of Slovakia case study
-#          the stp we call 3 and is related to the silviculture management of site type 3 poor and acidic soils.
-#          NB is only a test...... and the activeties are based on volume 
+#          Cz case study of Kostelec, Lukas Bilek silviculture management of CZ case study, but using the landscape model of Kostelec case study for the north part 
 
 rm(list=ls())
 
