@@ -190,7 +190,7 @@ for (cases in 1:length(mystands)) {
   new_order_gg=c("ulgl", "tipl", "tico", "soau", "soar", "saca", "potr", "poni", "pisy", "pini", "pice", "lade", "frex", "coav", "casa","cabe", "bepe", "alvi", "alin", "algl", "acps", "acpl", "acca", "abal","qupu", "qupe","quro", "piab", "fasy")
   
   abestand.detail1$species <- factor(abestand.detail1$species, levels=new_order_gg)
-  g1 <-ggplot(abestand.detail1, aes(x=year, y=basalarea, fill=species)) + geom_area(show.legend=F) + scale_fill_manual(values=cols, guide=guide_legend(reverse=TRUE))+ labs(y="basal area [m²/ha]") + ggtitle(paste0("Basal area at stand=", mystand))+ theme_bw() + theme(panel.grid.major = element_blank(), panel.grid.minor = element_blank(), axis.line = element_line(colour = "black"), plot.title = element_text(hjust = 0.5, size=12, face="bold", vjust=1)) + scale_x_continuous(expand = c(0.0, 0.0)) + theme(plot.background=element_rect(colour=NA))
+  g1 <-ggplot(abestand.detail1, aes(x=year, y=basalarea, fill=species)) + geom_area(show.legend=F) + scale_fill_manual(values=cols, guide=guide_legend(reverse=TRUE))+ labs(y="basal area [mÂ²/ha]") + ggtitle(paste0("Basal area at stand=", mystand))+ theme_bw() + theme(panel.grid.major = element_blank(), panel.grid.minor = element_blank(), axis.line = element_line(colour = "black"), plot.title = element_text(hjust = 0.5, size=12, face="bold", vjust=1)) + scale_x_continuous(expand = c(0.0, 0.0)) + theme(plot.background=element_rect(colour=NA))
   
   for (nn in 1:number.of.activites){
     g1<-g1+geom_vline(xintercept =abestand.removal1$year[nn])+annotate(geom="text", x=0.95*abestand.removal1$year[nn], y=50, label=abestand.removal1$activity[nn], color="red", angle=90)
@@ -198,7 +198,7 @@ for (cases in 1:length(mystands)) {
   
   abestand.detail1.smalls<-data.frame(abestand.detail1 %>% filter(relBasalarea<0.2))
   
-  g2 <-ggplot(abestand.detail1.smalls, aes(x=year, y=basalarea, fill=species)) + geom_area(show.legend=F) + scale_fill_manual(values=cols, guide=guide_legend(reverse=TRUE))+ labs(y="basal area [m²/ha]") + ggtitle(paste0("Basal area of species less than 20% at stand=", mystand)) + theme_bw() + theme(panel.grid.major = element_blank(), panel.grid.minor = element_blank(),  axis.line = element_line(colour = "black"), plot.title = element_text(hjust = 0.5, size=12, face="bold", vjust=1)) + scale_x_continuous(expand = c(0.0, 0.0)) + theme(plot.background=element_rect(colour=NA))
+  g2 <-ggplot(abestand.detail1.smalls, aes(x=year, y=basalarea, fill=species)) + geom_area(show.legend=F) + scale_fill_manual(values=cols, guide=guide_legend(reverse=TRUE))+ labs(y="basal area [mÂ²/ha]") + ggtitle(paste0("Basal area of species less than 20% at stand=", mystand)) + theme_bw() + theme(panel.grid.major = element_blank(), panel.grid.minor = element_blank(),  axis.line = element_line(colour = "black"), plot.title = element_text(hjust = 0.5, size=12, face="bold", vjust=1)) + scale_x_continuous(expand = c(0.0, 0.0)) + theme(plot.background=element_rect(colour=NA))
   
   for (nn in 1:number.of.activites){
     g2<-g2+geom_vline(xintercept =abestand.removal1$year[nn])+annotate(geom="text", x=0.95*abestand.removal1$year[nn], y=10, label=abestand.removal1$activity[nn], color="red", angle=90)
