@@ -22,7 +22,7 @@ print(tables.in.the.file)
 
 #-----------------------------------------------
 # READ IN different tables:    (here can read in by table names.... depending on what you have in your outputfile)
-
+carbonflow_cc <- dbReadTable(db1, "carbonflow")
 carbon_cc <- dbReadTable(db1,"carbon")
 # wind <- dbReadTable(db1,"wind")
 # barkbeetle <- dbReadTable(db1,"barkbeetle")
@@ -35,7 +35,7 @@ dynamicStand_cc <- dbReadTable(db1, "dynamicstand")
 
 dbDisconnect(db1)    # close the file
 
-
+carbonflow_cc <- dbReadTable(db2, "carbonflow")
 carbon_sw <- dbReadTable(db2,"carbon")
 # wind <- dbReadTable(db2,"wind")
 # barkbeetle <- dbReadTable(db2,"barkbeetle")
@@ -58,12 +58,65 @@ ggplot(landscape_cc, aes(year,volume_m3, fill=species))+
   ggtitle("Clear Cut Volume Transitional Period by species")+
   theme(plot.title = element_text(hjust = 0.5))
 
-
-ggplot(landscape_cc, aes(year,volume_m3))+
+ggplot(abeUnit_cc, aes(year,volume))+
   geom_line(color = "steelblue") +
   ggtitle("Clear Cut Volume Transitional Period")+
   theme(plot.title = element_text(hjust = 0.5))
 
+ggplot(abeUnit_cc, aes(year,realizedHarvest))+
+  geom_line(color = "steelblue") +
+  ggtitle("Clear Cut Realized Harvest Transitional Period")+
+  theme(plot.title = element_text(hjust = 0.5))
+
+ggplot(carbonflow_cc, aes(year,NPP))+
+  geom_line(color = "steelblue") +
+  ggtitle("Clear Cut NPP Transitional Period")+
+  theme(plot.title = element_text(hjust = 0.5))
+
+ggplot(landscape_cc, aes(year,LAI))+
+  geom_area(color = "steelblue") +
+  ggtitle("Clear Cut LAI Transitional Period")+
+  theme(plot.title = element_text(hjust = 0.5))
+
+# x <- c(carbonflow_cc$GPP, carbonflow_cc$NPP, carbonflow_cc$Rh, carbonflow_cc$NEP, carbonflow_cc$cumNPP, carbonflow_cc$cumRh, carbonflow_cc$cumNEP)
+
+# make the species C kg time series single line per species
+
+ggplot(data=landscape_cc, aes(x=year, y=total_carbon_kg, color=species)) + 
+  geom_line()+
+  ggtitle("Total Carbon per species time series in Clear cut")+
+  theme(plot.title = element_text(hjust = 0.5))
+
+#create pie chart
+ggplot(landscape_cc, aes(x="", y=volume_m3, fill=species)) +
+  geom_bar(stat="identity", width=1) +
+  coord_polar("y", start=0)+
+  ggtitle("Pie chart 400y avarage of landscape volume (m3) per species in Clear cut")
+
+ggplot(landscape_cc, aes(x="", y=volume_m3, fill=species)) +
+  geom_bar(stat="identity", width=1) +
+  coord_polar("y", start=0) +
+  theme_void()+
+  ggtitle("Pie chart 400y avarage of landscape volume (m3) per species in Clear cut")
+
+ggplot(landscape_cc, aes(x="", y=volume_m3, fill=species)) +
+  geom_bar(stat="identity", width=1) +
+  coord_polar("y", start=0) +
+  geom_text(aes(label = paste0(volume_m3, "%")), position = position_stack(vjust=0.5)) +
+  labs(x = NULL, y = NULL, fill = NULL)+
+  ggtitle("Pie chart 400y avarage of landscape volume (m3) per species in Clear cut")
+
+ggplot(landscape_cc, aes(x="", y=volume_m3, fill=species)) +
+  geom_bar(stat="identity", width=1) +
+  coord_polar("y", start=0) +
+  geom_text(aes(label = paste0(volume_m3, "%")), position = position_stack(vjust=0.5)) +
+  labs(x = NULL, y = NULL, fill = NULL) +
+  theme_classic() +
+  theme(axis.line = element_blank(),
+        axis.text = element_blank(),
+        axis.ticks = element_blank()) +
+ # to work you have add all the color for variable...-> scale_fill_manual(values=c("#FF5733", "#75FF33", "#33DBFF", "#BD33FF"))+
+  ggtitle("Pie plot of avarage of 400y of landscape volume (m3) per species in Clear cut")
 
 # Make a plot with ggplot Basal Area by species (in landscape output), for the transitional period
 
@@ -72,11 +125,16 @@ ggplot(landscape_cc, aes(year,basal_area_m2, fill=species))+
   ggtitle("Clear Cut Basal Area Transitional Period by species")+
   theme(plot.title = element_text(hjust = 0.5))
 
-
-ggplot(landscape_cc, aes(year,basal_area_m2))+
-  geom_line(color = "steelblue") +
-  ggtitle("Clear Cut Basal Area Transitional Period prob. the most common species")+
+ggplot(data=landscape_cc, aes(x=year, y=basal_area_m2, color=species)) + 
+  geom_line() +
+  ggtitle("Basal Area per species time series in Clear cut")+
   theme(plot.title = element_text(hjust = 0.5))
+
+
+# ggplot(dynamicStand_cc, aes(year,basalarea_sum))+
+#  geom_line(color = "steelblue") +
+#  ggtitle("Clear Cut Basal Area Transitional Period")+
+#  theme(plot.title = element_text(hjust = 0.5))
 
 
 # ggplot(abeStand, aes(year,volume, fill=standid))+   
@@ -177,3 +235,23 @@ hist(landscape_cc$volume_m3, landscape_cc$dbh_avg_cm, main= 'Clear Cut V-DBH Tra
 
 hist(landscape_sw$volume_m3, landscape_sw$dbh_avg_cm, main= 'Shalterwood V-DBH Transitional Period')
 
+# Report 
+
+# needed to work properly with latex
+
+tinytex::install_tinytex()
+tinytex::tlmgr_update()
+
+# libraries needed for knitr report
+
+library (knitr)
+library (tinytex)         # librerie necessarie
+
+
+# vedi la funzione stitch e trova altri template da qui. https://rdrr.io/cran/knitr/man/stitch.html
+# I hided only warnings #delete the warning, message and codes in the report.
+# To hide the warnings use the code here or go in the link to study other functionalities
+
+knitr::opts_chunk$set(warning = FALSE, message = FALSE, echo = TRUE)
+
+stitch("C:/lab/tp_report.txt", template=system.file("misc", "knitr-template.Rnw", package="knitr"))  
