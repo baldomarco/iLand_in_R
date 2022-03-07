@@ -2,11 +2,11 @@
 library(RSQLite)
 
 # Path to search the data
-dataroot <- ("C:/iland_data_test/20220217/")
+dataroot <- ("C:/iLand/2022/20220307/")
 
 # Name of the database
-file_cc <-paste0(dataroot,"Cz_region_20220214_BAU_management_all_stps_and_constrains_small_area.sqlite")   # file to read
-file_sw <-paste0(dataroot,"Cz_region_20220214_BAU_SW_management_all_stps_and_constrains_small_area.sqlite")   # file to read
+file_cc <-paste0(dataroot,"Cz_region_20220303_BAU_management.sqlite")   # file to read
+file_sw <-paste0(dataroot,"Cz_region_20220303_BAU_SW_management.sqlite")   # file to read
 
 # connect to the database of clearcut model
 sqlite.driver <- dbDriver("SQLite")
@@ -34,6 +34,8 @@ dynamicStand_cc <- dbReadTable(db1, "dynamicstand")
 # stand <- dbReadTable(db1, "stand")
 
 dbDisconnect(db1)    # close the file
+
+
 carbon_sw <- dbReadTable(db2,"carbon")
 # wind <- dbReadTable(db2,"wind")
 # barkbeetle <- dbReadTable(db2,"barkbeetle")
@@ -53,24 +55,28 @@ library(ggplot2)
 
 ggplot(landscape_cc, aes(year,volume_m3, fill=species))+
   geom_area() +
-  ggtitle("Clear Cut Volume Transitional Period by species")
+  ggtitle("Clear Cut Volume Transitional Period by species")+
+  theme(plot.title = element_text(hjust = 0.5))
 
 
 ggplot(landscape_cc, aes(year,volume_m3))+
   geom_line(color = "steelblue") +
-  ggtitle("Clear Cut Volume Transitional Period")
+  ggtitle("Clear Cut Volume Transitional Period")+
+  theme(plot.title = element_text(hjust = 0.5))
 
 
 # Make a plot with ggplot Basal Area by species (in landscape output), for the transitional period
 
 ggplot(landscape_cc, aes(year,basal_area_m2, fill=species))+
   geom_area() +
-  ggtitle("Clear Cut Basal Area Transitional Period by species")
+  ggtitle("Clear Cut Basal Area Transitional Period by species")+
+  theme(plot.title = element_text(hjust = 0.5))
 
 
 ggplot(landscape_cc, aes(year,basal_area_m2))+
   geom_line(color = "steelblue") +
-  ggtitle("Clear Cut Basal Area Transitional Period prob. the most common species")
+  ggtitle("Clear Cut Basal Area Transitional Period prob. the most common species")+
+  theme(plot.title = element_text(hjust = 0.5))
 
 
 # ggplot(abeStand, aes(year,volume, fill=standid))+   
@@ -80,23 +86,26 @@ ggplot(landscape_cc, aes(year,basal_area_m2))+
 
 ggplot(landscape_sw, aes(year,volume_m3, fill=species))+
   geom_area() +
-  ggtitle("Shelterwood Volume Transitional Period by species")
+  ggtitle("Shelterwood Volume Transitional Period by species")+
+  theme(plot.title = element_text(hjust = 0.5))
 
 
 ggplot(landscape_sw, aes(year,volume_m3))+
   geom_line(color = "steelblue") +
-  ggtitle("Shelterwood Volume Transitional Period prob. most common sp.")
+  ggtitle("Shelterwood Volume Transitional Period prob. most common sp.")+
+  theme(plot.title = element_text(hjust = 0.5))
 
 # Make a plot with ggplot Basal Area by species (in landscape output), for the transitional period
 
 ggplot(landscape_sw, aes(year,basal_area_m2, fill=species))+
   geom_area() +
-  ggtitle("Shelterwood Volume Transitional Period by species")
+  ggtitle("Shelterwood Volume Transitional Period by species")+
+  theme(plot.title = element_text(hjust = 0.5))
 
 ggplot(landscape_sw, aes(year,basal_area_m2))+
   geom_line(color = "steelblue") +
-  ggtitle("Shelterwood Volume Transitional Period prob. most common species")
-
+  ggtitle("Shelterwood Volume Transitional Period prob. most common species")+
+  theme(plot.title = element_text(hjust = 0.5))
 
 
 # create the histogram of Volume/ DBH by species
@@ -106,24 +115,28 @@ library(dplyr)
 
 ggplot(landscape_cc, aes(year,dbh_avg_cm, fill=species))+
   geom_area() +
-  ggtitle("Clear Cut DBH Transitional Period by species")
+  ggtitle("Clear Cut DBH Transitional Period by species")+
+  theme(plot.title = element_text(hjust = 0.5))
 
 
 ggplot(landscape_cc, aes(year,dbh_avg_cm))+
   geom_line(color = "steelblue") +
-  ggtitle("Clear Cut DBH Transitional Period")
+  ggtitle("Clear Cut DBH Transitional Period")+
+  theme(plot.title = element_text(hjust = 0.5))
 
 
 # Shelterwood
 
 ggplot(landscape_sw, aes(year,dbh_avg_cm, fill=species))+
   geom_area() +
-  ggtitle("Shelterwood DBH Transitional Period by species")
+  ggtitle("Shelterwood DBH Transitional Period by species")+
+  theme(plot.title = element_text(hjust = 0.5))
 
 
 ggplot(landscape_sw, aes(year,dbh_avg_cm))+
   geom_line(color = "steelblue") +
-  ggtitle("Shelterwood DBH Transitional Period")
+  ggtitle("Shelterwood DBH Transitional Period")+
+  theme(plot.title = element_text(hjust = 0.5))
 
 
 
@@ -136,24 +149,28 @@ hist(landscape_sw$year, landscape_sw$dbh_avg_cm, main= 'Shalterwood DBH Transiti
 
 ggplot(landscape_cc, aes(volume_m3,dbh_avg_cm, fill=species))+
   geom_area() +
-  ggtitle("Clear Cut V-DBH Transitional Period by species")
+  ggtitle("Clear Cut V-DBH Transitional Period by species")+
+  theme(plot.title = element_text(hjust = 0.5))
 
 
 ggplot(landscape_cc, aes(volume_m3,dbh_avg_cm))+
   geom_line(color = "steelblue") +
-  ggtitle("Clear Cut V-DBH Transitional Period")
+  ggtitle("Clear Cut V-DBH Transitional Period")+
+  theme(plot.title = element_text(hjust = 0.5))
 
 
 # Shelterwood
 
 ggplot(landscape_sw, aes(volume_m3,dbh_avg_cm, fill=species))+
   geom_area() +
-  ggtitle("Shelterwood V-DBH Transitional Period by species")
+  ggtitle("Shelterwood V-DBH Transitional Period by species")+
+  theme(plot.title = element_text(hjust = 0.5))
 
 
 ggplot(landscape_sw, aes(volume_m3,dbh_avg_cm))+
   geom_line(color = "steelblue") +
-  ggtitle("Shelterwood V-DBH Transitional Period")
+  ggtitle("Shelterwood V-DBH Transitional Period")+
+  theme(plot.title = element_text(hjust = 0.5))
 
 
 hist(landscape_cc$volume_m3, landscape_cc$dbh_avg_cm, main= 'Clear Cut V-DBH Transitional Period')
