@@ -398,7 +398,6 @@ x7 <- ggplot(harvests, aes(year,harvest, color=case))+
 x7 + theme(plot.title = element_text(hjust = 0.5))
 
 
-
 x8 <-ggplot(harvests, aes(year,harvest))+
   geom_line(size=1.2)+
   facet_wrap(~case, ncol=1)+
@@ -408,6 +407,176 @@ x8 <-ggplot(harvests, aes(year,harvest))+
   ylim(0,25)+
   theme_bw()
 x8 + theme(plot.title = element_text(hjust = 0.5))
+
+#_______________________________________________________________________________
+# CUMULATIVE HARVEST WIND AND BARK BEETLE
+
+cs1 <-data.frame(year=abeUnit_cc_wb$year, harvest=cumsum(abeUnit_cc_wb$realizedHarvest), case="clearcut with wind and bark beetle")
+cs2 <-data.frame(year=abeUnit_sw_wb$year, harvest=cumsum(abeUnit_sw_wb$realizedHarvest), case="Shelterwood with wind and bark beetle")
+
+harvests <- rbind(cs1,cs2)
+#head(h1)
+
+summary(cs1)  # statistics
+summary(cs2)
+#dim(h1)      # dimension of the dataframe
+
+#_________________________________________________________________________________
+# LINE
+
+cumHarv <- ggplot(harvests, aes(year,harvest, color=case))+
+  geom_line(size=1.2)+
+  ggtitle("Realized Cumulative Harvest wind and bark beetle")+
+  theme(plot.title = element_text(hjust = 0.5))+
+  ylab("Realized harvest [m3/ha]")+
+  theme_bw()
+
+cumHarv <- cumHarv + theme(plot.title = element_text(lineheight=3, face="bold", color="black", size=22))
+cumHarv <- cumHarv + theme(plot.title = element_text(hjust = 0.5))
+cumHarv <- cumHarv + theme(axis.title.y = element_text(size = rel(1.8), angle = 90))
+cumHarv <- cumHarv + theme(axis.title.x = element_text(size = rel(1.8), angle = 00))
+cumHarv
+
+# Plot the realized harvest
+# If you want it in logarithmic form -> log(h1) or log10(h1)
+
+# LOGARITHMIC
+cumHarv <- ggplot(harvests, aes(year,log(harvest), color=case))+
+  geom_line(size=1.2)+
+  ggtitle("Log Realized Cumulative Harvest Test 8")+
+  theme(plot.title = element_text(hjust = 0.5))+
+  ylab("Realized harvest m3/ha")+
+  theme_bw()
+
+cumHarv <- cumHarv + theme(plot.title = element_text(lineheight=3, face="bold", color="black", size=22))
+cumHarv <- cumHarv + theme(plot.title = element_text(hjust = 0.5))
+cumHarv <- cumHarv + theme(axis.title.y = element_text(size = rel(1.8), angle = 90))
+cumHarv <- cumHarv + theme(axis.title.x = element_text(size = rel(1.8), angle = 00))
+cumHarv
+
+
+#-----------------------------------------
+# with wind
+
+cs3<-data.frame(year=abeUnit_cc_w$year, harvest=cumsum(abeUnit_cc_w$realizedHarvest), case="clearcut with wind")
+cs4<-data.frame(year=abeUnit_sw_w$year, harvest=cumsum(abeUnit_sw_w$realizedHarvest), case="Shelterwood with wind")
+
+harvests <- rbind(cs3,cs4)
+#head(h1)
+
+summary(cs3)  # statistics
+summary(cs4)
+#dim(h1)      # dimension of the dataframe
+
+#_________________________________________________________________________________
+# LINE
+
+cumHarv <- ggplot(harvests, aes(year,harvest, color=case))+
+  geom_line(size=1.2)+
+  ggtitle("Realized Cumulative Harvest Test 8")+
+  theme(plot.title = element_text(hjust = 0.5))+
+  ylab("Realized harvest m3/ha")+
+  theme_bw()
+
+cumHarv <- cumHarv + theme(plot.title = element_text(lineheight=3, face="bold", color="black", size=22))
+cumHarv <- cumHarv + theme(plot.title = element_text(hjust = 0.5))
+cumHarv <- cumHarv + theme(axis.title.y = element_text(size = rel(1.8), angle = 90))
+cumHarv <- cumHarv + theme(axis.title.x = element_text(size = rel(1.8), angle = 00))
+cumHarv
+
+# Plot the realized harvest
+# If you want it in logarithmic form -> log(h1) or log10(h1)
+
+# LOGARITHMIC
+cumHarv <- ggplot(harvests, aes(year,log(harvest), color=case))+
+  geom_line(size=1.2)+
+  ggtitle("Log Realized Cumulative Harvest Test 8")+
+  theme(plot.title = element_text(hjust = 0.5))+
+  ylab("Realized harvest m3/ha")+
+  theme_bw()
+
+cumHarv <- cumHarv + theme(plot.title = element_text(lineheight=3, face="bold", color="black", size=22))
+cumHarv <- cumHarv + theme(plot.title = element_text(hjust = 0.5))
+cumHarv <- cumHarv + theme(axis.title.y = element_text(size = rel(1.8), angle = 90))
+cumHarv <- cumHarv + theme(axis.title.x = element_text(size = rel(1.8), angle = 00))
+cumHarv
+
+#___________________________________________________________________________
+#-----------------------------------------
+# Without disturbance
+
+cs5<-data.frame(year=abeUnit_cc$year, harvest=cumsum(abeUnit_cc$realizedHarvest), case="clearcut Management")
+cs6<-data.frame(year=abeUnit_sw$year, harvest=cumsum(abeUnit_sw$realizedHarvest), case="Shelterwood Manageme")
+
+harvests <- rbind(cs5,cs6)
+#head(h1)
+
+summary(cs5)  # statistics
+summary(cs6)
+#dim(h1)      # dimension of the dataframe
+
+#_________________________________________________________________________________
+# LINE
+
+cumHarv <- ggplot(harvests, aes(year,harvest, color=case))+
+  geom_line(size=1.2)+
+  ggtitle("Realized Cumulative Harvest Test 8")+
+  theme(plot.title = element_text(hjust = 0.5))+
+  ylab("Realized harvest m3/ha")+
+  theme_bw()
+
+cumHarv <- cumHarv + theme(plot.title = element_text(lineheight=3, face="bold", color="black", size=22))
+cumHarv <- cumHarv + theme(plot.title = element_text(hjust = 0.5))
+cumHarv <- cumHarv + theme(axis.title.y = element_text(size = rel(1.8), angle = 90))
+cumHarv <- cumHarv + theme(axis.title.x = element_text(size = rel(1.8), angle = 00))
+cumHarv
+
+# Plot the realized harvest
+# If you want it in logarithmic form -> log(h1) or log10(h1)
+
+# LOGARITHMIC
+cumHarv <- ggplot(harvests, aes(year,log(harvest), color=case))+
+  geom_line(size=1.2)+
+  ggtitle("Log Realized Cumulative Harvest Test 8")+
+  theme(plot.title = element_text(hjust = 0.5))+
+  ylab("Realized harvest m3/ha")+
+  theme_bw()
+
+cumHarv <- cumHarv + theme(plot.title = element_text(lineheight=3, face="bold", color="black", size=22))
+cumHarv <- cumHarv + theme(plot.title = element_text(hjust = 0.5))
+cumHarv <- cumHarv + theme(axis.title.y = element_text(size = rel(1.8), angle = 90))
+cumHarv <- cumHarv + theme(axis.title.x = element_text(size = rel(1.8), angle = 00))
+cumHarv
+
+#___________________________________________________________________________
+
+#___________________________________________________________________________
+# Yearly increment on the landscape 
+
+
+inc1<-data.frame(year=landscape_cc_wb$year, volume_inc=abeUnit_cc_wb$realizedHarvest, case="Clearcut_wb")
+inc2<-data.frame(year=landscape_sw_wb$year, volume_inc=abeUnit_sw_wb$realizedHarvest, case="Shelterwood_wb")
+
+harvests<- rbind(a1,a2)
+
+x1 <- ggplot(harvests, aes(year,harvest, color=case))+
+  geom_line(size=1.2)+
+  ggtitle("Realized transitional period total harvest in wind and bark beetle regime")+
+  #theme(plot.title = element_text(hjust = 0.5))+
+  ylab("Realized harvest [m3/ha]")+
+  ylim(0,15)+
+  theme_bw()
+x1 + theme(plot.title = element_text(hjust = 0.5))
+
+x2 <-ggplot(harvests, aes(year,harvest))+
+  geom_line(size=1.2)+
+  facet_wrap(~case, ncol=1)+
+  ggtitle("Realized transitional period total harvest in wind and bark beetle regime")+
+  #theme(plot.title = element_text(hjust = 0.5))+
+  ylab("Realized harvest [m3/ha]")+
+  ylim(0,25)+
+  theme_bw()
+x2 + theme(plot.title = element_text(hjust = 0.5))
 
 #_______________________________________________________________________________
 # PIE CHARTS IN wind and bark beetle REGIME VOLUME BY SPECIES PROPORTION
@@ -1457,3 +1626,229 @@ legend("topright", c("1.023 m3 / 0.344 %"), cex = 0.55, title = "Average killed 
 hist(prop_killed_vol_ha_year_sw_w$perc.vol, main = "Landscape proportion of killed volume [m3/ha] by wind per year in SW",cex.main = 1, xlab = "[Killed volume / Total volume] = [%]", ylab = "Frequency [years]",cex.lab = 1, col="lightblue", breaks = "FD", ylim = c(0,60))
 
 legend("topright", c("0.992 m3 / 0.350 %"), cex = 0.55, title = "Average killed volume [m3/ha/yea] / avarage % on total volume", text.font = 3, bg='lightpink')
+
+#_______________________________________________________________________________
+# Loop to see into the transitional period but interately
+
+# install.packages("RSQLite")
+library(RSQLite)
+library(dplyr)
+library(ggplot2)
+library(gridExtra)   
+
+#_______________________________________________________________________________
+# Path to search the data
+dataroot <- ("C:/iLand/2022/20220420/1/")                        # Root for the selection of the data
+
+# CREATE NEW EMPTY DATAFRAME
+removals<-c()
+lnd<-c()
+aUnit<-c()
+
+# NAMES OF THE DATABESES VARIABLES
+cases <-c("case1a", "case1b","case2a","case2b","case3a","case3b")
+
+#cases <- c("SW9","SW10","SW11","SW12")
+
+# ALTERNATIE WAY
+#fs <- c("aaa","bbb","ccc","ddd")                                      # ALTERNATIVE WAY AAA,BBB,CCC,DDD ARE THE NAMES OF THE DBs
+#fs <- c("Cz_region_20220325_BAU_sw_management_brow_0.6")
+
+
+#_______________________________________________________________________________
+# FOR CYCLE FOR THE IMPORT AND ANALYSIS OF THE LANDSCAPE VOLUME AND VOLUME HARVESTED
+
+
+for (i in (1:length(cases)))  {                                        # We read in the files in the loop. The "i" is for the x-> 1:i 
+  
+  # "for" = for argument, "(in"= in, "1"= first element of the for cycle to analysis, ": length(cases)))" = throgh the length of the object cases  
+  # PAY ATTENTION FROM HERE FOR TESTING
+  
+  # i <- 1                                                                 # to test but remember to don't run also the }
+  
+  case<-cases[i]                                                      # ORDINATION OF THE CASE TO IMPORT AS DATABASE
+  
+  
+  # Name of the database
+  file <-paste0(dataroot, case, ".sqlite")   # file to read here the case is always the actual case in the loop
+  
+  # "file"= name of the object, "paste0"+ function to create a NAME for a computer path of selection of data/objects
+  
+  # ALTERNATIVE WAY
+  #f <-paste0(dataroot,fs,".sqlite")
+  
+  print(file)
+  
+  # connect to the database of clearcut model
+  sqlite.driver <- dbDriver("SQLite")
+  db1 <- dbConnect(sqlite.driver, dbname = file)  # connect to the file
+  tables.in.the.file<-dbListTables(db1)           # explore the tables in the file
+  print(tables.in.the.file)
+  
+  
+  #-----------------------------------------------
+  landscape <- dbReadTable(db1,"landscape")
+  abeUnit <- dbReadTable(db1, "abeUnit")
+  abeStandRemoval <- dbReadTable(db1,"abeStandRemoval")
+  
+  #carbon <- dbReadTable(db1,"carbon")
+  # wind <- dbReadTable(db1,"wind")
+  #carbonflow <- dbReadTable(db1, "carbonflow")
+  dbDisconnect(db1)    # close the file
+  
+  landscape.area<-landscape$area[1]
+  
+  
+  
+  # Make the 3 categories of removals:
+  
+  activity.names<-unique(abeStandRemoval$activity)    # here I list all different type of activites
+  
+  swcuts<- grepl("sw",activity.names)     # I look for only which has "sw" this grepl gives TRUE/FALSE
+  activity.names.sw<-activity.names[swcuts] # collect the activity names with sw
+  activity.names.notsw<-activity.names[!swcuts]  # collect the activity names withOUT sw
+  
+  #print(activity.names.sw)
+  #print(activity.names.notsw)
+  
+  # Here I filter only the listed activity names and calculate thinning/finalcut values for every year 
+  # (each line is per ha for a stand, so I scale with the area, sum up all the harvest on the landscape and then divide it with the whole area to get again per ha)
+  
+  ab.regcuts<- data.frame(abeStandRemoval %>% filter(activity %in% activity.names.sw)    %>% 
+                            group_by(year)   %>%   summarise(volume=sum(volumeThinning*area)/landscape.area, type="regcut", run=case))
+  
+  ab.finalcuts<- data.frame(abeStandRemoval %>% filter(activity %in% activity.names.sw)    %>% 
+                              group_by(year)   %>%   summarise(volume=sum(volumeFinal*area)/landscape.area, type="finalcut", run=case))
+  
+  ab.thinnig<- data.frame(abeStandRemoval %>% filter(activity %in% activity.names.notsw)    %>% 
+                            group_by(year)   %>%   summarise(volume=sum(volumeThinning*area)/landscape.area, type="thinning", run=case))
+  
+  if (length(activity.names[swcuts])==0) {
+    
+    ab.finalcuts<- data.frame(abeStandRemoval %>% filter(activity %in% activity.names.notsw)    %>% 
+                                group_by(year)   %>%   summarise(volume=sum(volumeFinal*area)/landscape.area, type="finalcut", run=case))
+    
+  }
+  
+  removals<-rbind(removals,ab.regcuts,ab.finalcuts,ab.thinnig)
+  
+  
+  # Collect landscape data:
+  landscape<- (landscape %>% mutate(run=case))
+  lnd<-rbind(lnd, landscape)
+  
+  # Collect abeUnit data
+  abeUnit<-(abeUnit %>% mutate(run=case))
+  aUnit<-rbind(aUnit, abeUnit)
+  
+  
+  
+}  # end of loop
+
+
+# TO SUMMARIZE THE CUTTING ACTIVITIES
+values<-data.frame(removals %>% group_by(run, type) %>% summarise(volume=mean(volume)))
+print(values)
+values_sum <- values %>%
+  filter(run == "case1b", type=="finalcut", type == "thinning", type == "regcut")  # to have the results you have to decide only one type at time
+
+values_sum
+
+
+# NEED TO OPEN A PDF WRITER AND GIVE IT THE ROOT, THE NAME, AND THE SIZE
+
+pdf(paste0(dataroot, "20220420a.pdf"), height=8, width=12)
+#pdf(paste0(dataroot, "20220414b.pdf"), height=5, width=15)
+#pdf(paste0(dataroot, "20220414c.pdf"), height=10, width=25)
+
+
+
+#_______________________________________________________________________________
+# This tells the colors:
+
+species.we.have<-unique(lnd$species)                                            # IT IS SAYING WHICH SPECIES WE HAVE IN THE DATABASE IN THIS CASE LANDSCAPE
+
+
+# LIST OF ALL POSSIBLE SPECIES
+
+cols.all=c( "rops"="#e0e0e0", "acpl"="#A9A9A9",   "alin"="#696969", "alvi"="#2e2e2e",
+            "bepe"="#fadfad", 
+            "casa"="#7eeadf", "coav"="#20c6b6",  
+            "tipl"="#645394", "ulgl"="#311432" ,
+            "saca"="#D8BFD8",  "soar"="#DDA0DD", "soau"="#BA55D3",
+            "pice"="#D27D2D", "pini"="#a81c07",
+            "algl"="#2ECBE9","tico"="#128FC8",  "potr"="#00468B","poni"="#5BAEB7",
+            "frex"="#fe9cb5","cabe"="#fe6181","acps"="#fe223e",
+            "lade"="#FFFE71","abal"="#FFD800", "pisy"="#A4DE02",
+            "fasy"="#76BA1B", "piab"="#006600",
+            "quro"="#FF7F00", "qupe"="#FF9900", "qupu"="#CC9900" 
+)
+
+
+# COLORATION ORDER FOR ALL THE POSSIBLE SPECIES
+
+new_order_gg.all=c("alvi","alin", "acpl", "rops","bepe" ,"coav", "casa", "ulgl", "tipl",  "soau", "soar", "saca",  "pini", "pice",
+                   "poni", "algl", "tico", "potr",  "frex","cabe", "acps",  "lade", "abal",  "qupu", "qupe","quro","pisy", "fasy", "piab")
+
+
+# This will show at the end only the species we really have on the landscape. 
+
+cols<-cols.all[names(cols.all) %in% species.we.have]
+new_order_gg<- new_order_gg.all[new_order_gg.all %in% species.we.have]
+#_______________________________________________________________________________
+
+
+# STARTING PLOTS
+
+# column diagram
+ggplot(removals, aes(year, volume, fill=factor(type, levels=c( "regcut","finalcut","thinning"))))+
+  geom_bar(position="stack", stat="identity")+
+  facet_wrap(~run, ncol=1)+
+  labs(x = "Year",y="Removed volume m3/ha",fill = "Removal")+
+  scale_fill_manual(values=c("#4897D8","#FFDB5C","#FA6E59"))+               #"#B7B8B6","#34675C","#B3C100" grey and greens
+  theme_bw()
+
+# Make a plot with ggplot, volume, colored by species for the transitional period for Clear cut management system
+#-------------------------------------------------------------------------------
+
+ggplot(lnd, aes(year,volume_m3, fill=factor(species, levels=new_order_gg)))+
+  geom_area() +
+  scale_fill_manual(values=cols[new_order_gg], guide=guide_legend(reverse=TRUE))+
+  ggtitle("Clear Cut")+
+  facet_wrap(~run, ncol=1)+
+  labs(x = "Year",y="Volume m3/ha",fill = "Species")+
+  theme(plot.title = element_text(hjust = 0.5))+
+  ylim(0,400)+
+  theme_bw()
+
+#-------------------------------------------------------------------------------
+
+ggplot(aUnit, aes(year,realizedHarvest, color=case))+
+  geom_line(size=1.2, show.legend = F)+
+  facet_wrap(~run, ncol=1)+
+  ylim(4.5,15.5)+
+  ggtitle("Realized Harvest Transitional Period")+
+  theme(plot.title = element_text(hjust = 0.5))+
+  ylab("Realized harvest m3/ha")+
+  theme_bw()
+
+
+#-------------------------------------------------------------------------------
+
+# SPECIES specificaly BA:
+species.to.keep<-c("piab", "fasy","qupe", "psme")
+
+
+lnd2 <- lnd %>% filter(species %in% species.to.keep)
+
+ggplot(data=lnd2, aes(x=year, y=basal_area_m2, color=species)) + 
+  geom_line(size=1.2)+
+  ggtitle("Clear cut") +
+  facet_wrap(~run, ncol=1)+
+  theme(plot.title = element_text(hjust = 0.5))+
+  ylab("Basal area m2/ha")+  theme_bw()
+
+
+dev.off()
+
+#________________________________________________________________________THE END
