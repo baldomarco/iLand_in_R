@@ -98,3 +98,14 @@ write.table(a,paste0(dataroot,winds[i],"_",scens[j],"_upto2200.txt"), col.names 
 }
 
 }
+
+# the sample can be used to select the years randomly, just set "replace=F"  not to have more events in the same year
+# the sample function is good for the time randomization (give to us random numbers in a range together only integers)
+x <- sample(1:10, 5, replace=T)
+x
+
+
+# this gives 10 numbers in the range of 5->7.5   but not only integers
+# the runif function is good for wind speed randomization (give to us random numbers in a range together with not integers)
+x2 <- runif(10, 5.0, 7.5)
+x2
