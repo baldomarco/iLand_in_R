@@ -14,10 +14,12 @@ a$model.climate.co2concentration<-367
 
 a
 
+# Put set seed function to create consistent time series every time # in this script we did not need this because we are creating random series
 year <- sample(1:300, 70, replace=F)
 
 year <- sort(year, decreasing=FALSE)
 
+# this is the serie appearing for the simulation in Forest Recovery after disturbances experimental design
 events<-which(a$year==4|a$year==6|a$year==9|a$year==10|a$year==13|a$year==16|a$year==17|a$year==19|a$year==25|a$year==34|a$year==35|a$year==40|a$year==46|a$year==47|a$year==62|a$year==65|a$year==66|a$year==69|a$year==77|a$year==78|a$year==83|a$year==89|a$year==90|a$year==97|a$year==99|a$year==100|a$year==102|a$year==115|a$year==120|a$year==123|a$year==124|a$year==128|a$year==133|a$year==136|a$year==137|a$year==152|a$year==154|a$year==162|a$year==169|a$year==172|a$year==178|a$year==180|a$year==188|a$year==189|a$year==190|a$year==192|a$year==199|a$year==200|a$year==204|a$year==208|a$year==214|a$year==217|a$year==218|a$year==225|a$year==232|a$year==247|a$year==248|a$year==249|a$year==257|a$year==261|a$year==264|a$year==266|a$year==270|a$year==273|a$year==276|a$year==278|a$year==284|a$year==285|a$year==291|a$year==298)
 
 
@@ -39,10 +41,10 @@ x
 
 
 # this gives 10 numbers in the range of 5->7.5   but not only integers
-# the runif function is good for wind speed randomization (give to us random numbers in a range together with not integers)
+# the runif function is good for wind speed randomization (give to us random numbers in a specific range)
 # for examples -> https://www.statology.org/runif-in-r/
 
-x2 <- runif(100, 5.0, 7.5)
+x2 <- round(runif(100, 5.0, 7.5), 1) # one number after the comma
 x2
 
 write.table(x2,paste0(dataroot,".txt"), col.names = T, quote=F, row.names=F, sep=" ")
