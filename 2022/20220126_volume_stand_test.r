@@ -47,7 +47,8 @@ ggplot(abeStand, aes(year,volume, fill=standid))+
 x <- filter(abeStand, standid == "2155")
 stid1 <-ggplot(x, aes(year,volume) + 
                  geom_area() + 
-                 ggtitle("Stand ID 2155 STP3 (Env5) fasy")
+                 ggtitle("Stand ID 2155 STP3 (Env5) fasy"))
+
 stid1 + theme(plot.title = element_text(hjust = 0.5))
 
 ggplot(x, aes(dbh, volume)) + 
