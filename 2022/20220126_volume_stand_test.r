@@ -2,7 +2,7 @@
 
 # install.packages("RSQLite")
 library(RSQLite)
-
+library(ggplot2)
 
 
 file<-"C:/iland_data_test/20220125/Cz_region_20220125_BAU_management_all_stps_and_constrains.sqlite"   # file to read
